@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+:root {
+  --background: #07070a;
+  --foreground: #f2f0ec;
+  --bh-accent: #b64bff;
+  --bh-accent-2: #22d3ee;
+  --bh-muted: #8a8a94;
+}
+
+* {
+  scrollbar-color: var(--bh-accent) #111;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  overflow-x: hidden;
+}
+
+/* Bold outlined display text, used for hero + section headers. */
+.ink-text {
+  text-shadow:
+    -2px -2px 0 #000,
+     2px -2px 0 #000,
+    -2px  2px 0 #000,
+     2px  2px 0 #000,
+     4px  4px 0 rgba(0, 0, 0, 0.8);
+}
+
+.vignette-overlay {
+  background: radial-gradient(circle, transparent 35%, #07070a 100%);
+}
+
+/* Masonry-ish gallery using CSS columns so items reflow naturally. */
+.masonry {
+  column-gap: 1rem;
+}
+.masonry > * {
+  break-inside: avoid;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 0px) {
+  .masonry { columns: 2; }
+}
+@media (min-width: 768px) {
+  .masonry { columns: 3; }
+}
+@media (min-width: 1280px) {
+  .masonry { columns: 4; }
+}
+
+/* Skewed CTA affordance shared across the site. */
+.skew-cta {
+  transform: skewX(-10deg);
+}
+.skew-cta > * {
+  display: inline-block;
+  transform: skewX(10deg);
+}
+
+::selection {
+  background: var(--bh-accent);
+  color: #050505;
+}
+
+/* Slim custom scrollbar for filter rows */
+.hide-scrollbar::-webkit-scrollbar {
+  height: 6px;
+}
+.hide-scrollbar::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 999px;
+}

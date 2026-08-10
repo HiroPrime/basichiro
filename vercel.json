@@ -1,0 +1,11 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    { "source": "/login", "destination": "/?auth=open", "permanent": false },
+    { "source": "/signup", "destination": "/?auth=open", "permanent": false },
+    { "source": "/sign-in", "destination": "/?auth=open", "permanent": false },
+    { "source": "/sign-up", "destination": "/?auth=open", "permanent": false },
+    { "source": "/reset-password", "destination": "/?reset=true", "permanent": false },
+    { "source": "/auth/reset", "destination": "/?reset=true", "permanent": false }
+  ]
+}
