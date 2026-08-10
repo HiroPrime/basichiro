@@ -109,16 +109,17 @@ async function processFile(file: QueuedFile, index: number) {
   const baseKey = `${collectionSlug}/${slugify(title) || "untitled"}-${hash}`;
 
   try {
-    const source = sharp(absolutePath, { failOn: "none" }).rotate();
+    const sharpOpts = { failOn: "none" as const, limitInputPixels: false as const };
+    const source = sharp(absolutePath, sharpOpts).rotate();
     const metadata = await source.metadata();
 
-    const fullBuffer = await sharp(absolutePath, { failOn: "none" })
+    const fullBuffer = await sharp(absolutePath, sharpOpts)
       .rotate()
       .resize({ width: FULL_MAX_WIDTH, withoutEnlargement: true })
       .webp({ quality: 82 })
       .toBuffer();
 
-    const thumbBuffer = await sharp(absolutePath, { failOn: "none" })
+    const thumbBuffer = await sharp(absolutePath, sharpOpts)
       .rotate()
       .resize({ width: THUMB_MAX_WIDTH, withoutEnlargement: true })
       .webp({ quality: 75 })

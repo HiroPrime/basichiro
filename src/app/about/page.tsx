@@ -72,7 +72,7 @@ export default function AboutPage() {
 
       <RevealSection className="px-6 md:px-12 max-w-4xl mx-auto pb-24">
         <div className="relative border-l-2 border-[#1a1a1e] ml-3 md:ml-6">
-          {TIMELINE.map((step, i) => (
+          {TIMELINE.map((step) => (
             <div key={step.era} className="relative pl-8 md:pl-12 pb-14 last:pb-0">
               <span
                 className="absolute -left-[9px] top-1 w-4 h-4 rounded-full border-2 border-[#07070a]"

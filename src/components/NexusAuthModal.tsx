@@ -14,8 +14,27 @@ type Props = {
   onUserChange: (user: User | null) => void;
 };
 
+function initialViewFromLocation(): AuthView {
+  if (typeof window === "undefined") return "landing";
+  if (window.location.href.includes("type=recovery") || window.location.href.includes("reset=true")) {
+    return "update_password";
+  }
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("auth_error")) return "login";
+  return "landing";
+}
+
+function initialMessageFromLocation(): Message {
+  if (typeof window === "undefined") return { type: "", text: "" };
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("auth_error")) {
+    return { type: "error", text: "Sign-in failed. Please try again." };
+  }
+  return { type: "", text: "" };
+}
+
 export default function NexusAuthModal({ open, onClose, user, onUserChange }: Props) {
-  const [view, setView] = useState<AuthView>("landing");
+  const [view, setView] = useState<AuthView>(initialViewFromLocation);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
@@ -23,7 +42,7 @@ export default function NexusAuthModal({ open, onClose, user, onUserChange }: Pr
   const [avatarUrl, setAvatarUrl] = useState("");
   const [newsletter, setNewsletter] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState<Message>({ type: "", text: "" });
+  const [message, setMessage] = useState<Message>(initialMessageFromLocation);
 
   const resetForm = useCallback(() => {
     setEmail("");
@@ -72,13 +91,8 @@ export default function NexusAuthModal({ open, onClose, user, onUserChange }: Pr
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    if (window.location.href.includes("type=recovery") || window.location.href.includes("reset=true")) {
-      setView("update_password");
-    }
     const params = new URLSearchParams(window.location.search);
     if (params.get("auth_error")) {
-      setMessage({ type: "error", text: "Sign-in failed. Please try again." });
-      setView("login");
       params.delete("auth_error");
       const qs = params.toString();
       window.history.replaceState(

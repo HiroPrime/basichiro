@@ -18,7 +18,7 @@ export const NEXUS_SITES: NexusSite[] = [
     url: "https://grimmfracture.nexus",
     accent: "#8b0000",
     tags: ["Next.js", "Supabase", "Webcomic", "AI-assisted"],
-    screenshot: "/sites/grimm-fracture.png",
+    screenshot: "/sites/grimm-fracture.webp",
     status: "live",
   },
   {
@@ -28,7 +28,7 @@ export const NEXUS_SITES: NexusSite[] = [
     url: "https://corenode.nexus",
     accent: "#ff5f1f",
     tags: ["Next.js", "Canvas", "Hub"],
-    screenshot: "/sites/core-node.png",
+    screenshot: "/sites/core-node.webp",
     status: "live",
   },
   {
@@ -38,7 +38,7 @@ export const NEXUS_SITES: NexusSite[] = [
     url: "https://nexusprime.nexus",
     accent: "#39ff14",
     tags: ["Next.js", "Supabase", "RPG UI"],
-    screenshot: "/sites/nexus-prime.png",
+    screenshot: "/sites/nexus-prime.webp",
     status: "live",
   },
   {
@@ -48,7 +48,7 @@ export const NEXUS_SITES: NexusSite[] = [
     url: "https://primeportal.nexus",
     accent: "#38bdf8",
     tags: ["Next.js", "Dashboard", "Cron"],
-    screenshot: "/sites/prime-portal.png",
+    screenshot: "/sites/prime-portal.webp",
     status: "live",
   },
 ];

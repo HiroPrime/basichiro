@@ -104,12 +104,13 @@ export const COLLECTIONS: Collection[] = [
     sourceDirs: ["Designs 2024_2025/Potion Playerz Magazine"],
   },
   {
-    slug: "pokedex-project",
-    title: "The Pokédex Project",
-    blurb: "A full digital illustration series reimagining the original Pokédex, one entry at a time.",
+    slug: "digital-drawings",
+    title: "Digital Drawings & Fan Art",
+    blurb:
+      "Sketch-to-final character studies (Mario, Sonic, Pikachu, Kirby, Dipper Pines, and more), Pokéball illustrations, and a run of fruit and food studies.",
     accent: "#e3350d",
     group: "character-fan-art",
-    sourceDirs: ["Digital Drawings/Pokemon", "Designs 2024_2025/Pokemon"],
+    sourceDirs: ["Digital Drawings", "Designs 2024_2025/Pokemon"],
   },
   {
     slug: "skulls",
