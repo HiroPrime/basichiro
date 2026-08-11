@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import Header from "@/components/Header";
 import GalleryGrid from "@/components/GalleryGrid";
+import ProjectCaseStudyBody from "@/components/ProjectCaseStudyBody";
 import { getArtworksByCollection } from "@/lib/artworks";
 import { PROJECT_CASE_STUDIES, getProjectCaseStudy } from "@/lib/projects";
 
@@ -42,7 +43,7 @@ export default async function ProjectCaseStudyPage({
     <main className="min-h-screen bg-[#07070a] text-white font-sans">
       <Header />
       <section
-        className="pt-36 md:pt-44 pb-16 px-6 md:px-12 max-w-[1000px] mx-auto"
+        className="pt-36 md:pt-44 pb-16 px-6 md:px-12 max-w-[1100px] mx-auto"
         style={{ ["--collection-accent" as string]: project.accent }}
       >
         <Link
@@ -63,29 +64,7 @@ export default async function ProjectCaseStudyPage({
         </h1>
         <p className="text-gray-400 text-sm md:text-lg max-w-2xl mb-14">{project.tagline}</p>
 
-        <div
-          className="border-l-2 pl-6 md:pl-8 mb-16"
-          style={{ borderColor: project.accent }}
-        >
-          <p className="text-gray-200 text-base md:text-xl font-medium leading-relaxed">
-            {project.brief}
-          </p>
-        </div>
-
-        <div className="flex flex-col gap-12 md:gap-14 mb-16">
-          {project.sections.map((section) => (
-            <div key={section.heading}>
-              <h2 className="text-xl md:text-2xl font-black uppercase tracking-tight text-white mb-4">
-                {section.heading}
-              </h2>
-              <p className="text-gray-400 text-sm md:text-base leading-relaxed">{section.body}</p>
-            </div>
-          ))}
-        </div>
-
-        <p className="text-gray-300 text-base md:text-lg font-medium leading-relaxed italic border-t border-[#1a1a1e] pt-10">
-          {project.closing}
-        </p>
+        <ProjectCaseStudyBody project={project} artworks={artworks} />
       </section>
 
       <section className="px-6 md:px-12 pb-24 max-w-[1600px] mx-auto">

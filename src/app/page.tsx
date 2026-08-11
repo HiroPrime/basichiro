@@ -6,7 +6,7 @@ import RevealSection from "@/components/RevealSection";
 import GalleryGrid from "@/components/GalleryGrid";
 import NewsletterForm from "@/components/NewsletterForm";
 import SiteCard from "@/components/SiteCard";
-import { getFeaturedArtworks } from "@/lib/artworks";
+import { getBestWorkArtworks } from "@/lib/artworks";
 import { COLLECTIONS, GROUPS, type CollectionGroup } from "@/lib/collections";
 import { NEXUS_SITES } from "@/lib/sites";
 import { PROJECT_CASE_STUDIES } from "@/lib/projects";
@@ -22,7 +22,10 @@ const GROUP_ORDER: CollectionGroup[] = [
 ];
 
 export default async function Home() {
-  const featured = await getFeaturedArtworks(16);
+  const bestWork = await getBestWorkArtworks(
+    PROJECT_CASE_STUDIES.map((p) => p.collectionSlug),
+    5
+  );
 
   return (
     <main className="min-h-screen bg-[#07070a] text-white font-sans selection:bg-[#b64bff] selection:text-black">
@@ -72,6 +75,40 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* BEST WORK — hit early with the strongest, most personal projects */}
+      <RevealSection className="relative w-full py-16 md:py-24 px-6 md:px-12 bg-black border-t border-[#1a1a1e]">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="flex items-end justify-between mb-10 flex-wrap gap-4">
+            <div>
+              <p className="text-[#22d3ee] font-black tracking-[0.4em] text-[10px] md:text-xs mb-3 uppercase">
+                The Good Stuff
+              </p>
+              <h2 className="text-3xl md:text-5xl font-black tracking-tighter uppercase ink-text text-white">
+                Straight From the Best Projects
+              </h2>
+              <p className="text-gray-500 text-sm md:text-base mt-3 max-w-xl">
+                CinnaTwist, FitStrides, Potion Playerz, and Skulls — pulled straight from the
+                projects with the most to say. Full stories are one click away.
+              </p>
+            </div>
+            <Link
+              href="/projects"
+              className="text-xs font-black uppercase tracking-widest text-gray-400 hover:text-white transition-colors shrink-0"
+            >
+              Read the case studies →
+            </Link>
+          </div>
+          {bestWork.length > 0 ? (
+            <GalleryGrid artworks={bestWork} />
+          ) : (
+            <p className="text-gray-500 text-sm uppercase tracking-widest py-16 text-center border border-dashed border-[#222] rounded-sm">
+              Gallery import pending — run <code className="text-[#22d3ee]">npm run import-artworks</code> to
+              populate this section.
+            </p>
+          )}
+        </div>
+      </RevealSection>
+
       {/* NICHE STATEMENT */}
       <RevealSection className="relative w-full py-24 md:py-32 px-6 md:px-12 bg-[#07070a] flex flex-col items-center text-center">
         <div className="max-w-3xl mx-auto">
@@ -84,36 +121,6 @@ export default async function Home() {
             Packaging. Apparel. Stickers. Trading cards. A magazine. A webcomic with its own universe.
             AI is part of the toolkit now, but it&apos;s an accelerant, not the artist.
           </p>
-        </div>
-      </RevealSection>
-
-      {/* FEATURED WORK */}
-      <RevealSection className="relative w-full py-16 md:py-24 px-6 md:px-12 bg-black border-t border-[#1a1a1e]">
-        <div className="max-w-[1400px] mx-auto">
-          <div className="flex items-end justify-between mb-10 flex-wrap gap-4">
-            <div>
-              <p className="text-[#22d3ee] font-black tracking-[0.4em] text-[10px] md:text-xs mb-3 uppercase">
-                Featured
-              </p>
-              <h2 className="text-3xl md:text-5xl font-black tracking-tighter uppercase ink-text text-white">
-                Recent & Favorite Work
-              </h2>
-            </div>
-            <Link
-              href="/gallery"
-              className="text-xs font-black uppercase tracking-widest text-gray-400 hover:text-white transition-colors"
-            >
-              View full gallery →
-            </Link>
-          </div>
-          {featured.length > 0 ? (
-            <GalleryGrid artworks={featured} />
-          ) : (
-            <p className="text-gray-500 text-sm uppercase tracking-widest py-16 text-center border border-dashed border-[#222] rounded-sm">
-              Gallery import pending — run <code className="text-[#22d3ee]">npm run import-artworks</code> to
-              populate this section.
-            </p>
-          )}
         </div>
       </RevealSection>
 

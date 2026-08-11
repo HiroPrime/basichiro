@@ -63,6 +63,35 @@ export async function getFeaturedArtworks(limit = 12): Promise<Artwork[]> {
   return (data ?? []) as Artwork[];
 }
 
+function sampleEvenly<T>(items: T[], count: number): T[] {
+  if (items.length <= count) return items;
+  const step = items.length / count;
+  return Array.from({ length: count }, (_, i) => items[Math.floor(i * step)]);
+}
+
+/**
+ * A curated highlight reel pulled evenly across a specific set of collections
+ * (e.g. the standout case-study projects), interleaved so pieces from
+ * different projects alternate rather than clumping by collection. Used to
+ * put the strongest, most personality-driven work up front instead of
+ * relying on the generic per-collection `featured` flag.
+ */
+export async function getBestWorkArtworks(
+  collectionSlugs: string[],
+  perCollection = 5
+): Promise<Artwork[]> {
+  const lists = await Promise.all(collectionSlugs.map((slug) => getArtworksByCollection(slug)));
+  const sampled = lists.map((list) => sampleEvenly(list, perCollection));
+  const maxLen = Math.max(0, ...sampled.map((l) => l.length));
+  const interleaved: Artwork[] = [];
+  for (let i = 0; i < maxLen; i++) {
+    for (const list of sampled) {
+      if (list[i]) interleaved.push(list[i]);
+    }
+  }
+  return interleaved;
+}
+
 /** Collections that actually have at least one imported artwork, with counts. */
 export async function getCollectionCounts(): Promise<Record<string, number>> {
   const supabase = getSupabase();
