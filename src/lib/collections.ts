@@ -77,7 +77,10 @@ export const COLLECTIONS: Collection[] = [
     blurb: "A full fruit-themed apparel brand — logo, packaging, product photography, and ad campaigns.",
     accent: "#ff5ea3",
     group: "brand-builds",
-    sourceDirs: ["CinnaTwist"],
+    // "CinnaTwist/Stickers" is excluded here — those are general sticker
+    // illustrations, not part of the apparel brand, and live in the
+    // "stickers" collection below instead.
+    sourceDirs: ["CinnaTwist/Ads", "CinnaTwist/Branding", "CinnaTwist/Product Photos"],
   },
   {
     slug: "fitstrides",
@@ -173,7 +176,7 @@ export const COLLECTIONS: Collection[] = [
     blurb: "Sticker sheets and standalone designs, built for print and pass-around.",
     accent: "#f472b6",
     group: "production-products",
-    sourceDirs: ["Designs 2024_2025/Stickers"],
+    sourceDirs: ["Designs 2024_2025/Stickers", "CinnaTwist/Stickers"],
   },
   {
     slug: "merch-graphics",
