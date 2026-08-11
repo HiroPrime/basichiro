@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowDown, Sparkles, BookOpen, LayoutGrid } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Sparkles, BookOpen, LayoutGrid } from "lucide-react";
 import Header from "@/components/Header";
 import HeroCanvas from "@/components/HeroCanvas";
 import RevealSection from "@/components/RevealSection";
@@ -9,6 +9,7 @@ import SiteCard from "@/components/SiteCard";
 import { getFeaturedArtworks } from "@/lib/artworks";
 import { COLLECTIONS, GROUPS, type CollectionGroup } from "@/lib/collections";
 import { NEXUS_SITES } from "@/lib/sites";
+import { PROJECT_CASE_STUDIES } from "@/lib/projects";
 
 export const revalidate = 300;
 
@@ -150,6 +151,65 @@ export default async function Home() {
                 </div>
               );
             })}
+          </div>
+        </div>
+      </RevealSection>
+
+      {/* FEATURED CASE STUDIES */}
+      <RevealSection className="relative w-full py-16 md:py-24 px-6 md:px-12 bg-black border-t border-[#1a1a1e]">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="flex items-end justify-between mb-10 flex-wrap gap-4">
+            <div>
+              <p className="text-[#22d3ee] font-black tracking-[0.4em] text-[10px] md:text-xs mb-3 uppercase">
+                Deep Dives
+              </p>
+              <h2 className="text-3xl md:text-5xl font-black tracking-tighter uppercase ink-text text-white">
+                Featured Case Studies
+              </h2>
+            </div>
+            <Link
+              href="/projects"
+              className="text-xs font-black uppercase tracking-widest text-gray-400 hover:text-white transition-colors"
+            >
+              View all projects →
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {PROJECT_CASE_STUDIES.map((project) => (
+              <Link
+                key={project.slug}
+                href={`/projects/${project.slug}`}
+                className="group relative flex flex-col justify-between overflow-hidden rounded-sm border-2 bg-[#0c0c10] p-6 min-h-[220px] transition-transform duration-300 hover:-translate-y-1"
+                style={{ borderColor: `${project.accent}55` }}
+              >
+                <div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"
+                  style={{
+                    background: `radial-gradient(circle at 20% 0%, ${project.accent}22 0%, transparent 60%)`,
+                  }}
+                />
+                <div className="relative z-10">
+                  <p
+                    className="font-black tracking-[0.3em] text-[9px] uppercase mb-3"
+                    style={{ color: project.accent }}
+                  >
+                    {project.type}
+                  </p>
+                  <h3 className="text-lg font-black uppercase tracking-tight text-white mb-2">
+                    {project.title}
+                  </h3>
+                  <p className="text-gray-500 text-xs leading-relaxed">{project.tagline}</p>
+                </div>
+                <div className="relative z-10 flex items-center gap-2 mt-6 text-[10px] font-black uppercase tracking-widest text-gray-500 group-hover:text-white transition-colors">
+                  Read case study
+                  <ArrowUpRight
+                    size={14}
+                    className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
+                  />
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </RevealSection>

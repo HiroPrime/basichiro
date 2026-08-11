@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import Header from "@/components/Header";
 import GalleryGrid from "@/components/GalleryGrid";
 import { getArtworksByCollection } from "@/lib/artworks";
 import { COLLECTIONS, getCollection, GROUPS } from "@/lib/collections";
+import { getProjectCaseStudyByCollection } from "@/lib/projects";
 
 export const revalidate = 300;
 
@@ -37,6 +38,7 @@ export default async function CollectionPage({
   if (!collection) notFound();
 
   const artworks = await getArtworksByCollection(slug);
+  const caseStudy = getProjectCaseStudyByCollection(slug);
 
   return (
     <main className="min-h-screen bg-[#07070a] text-white font-sans">
@@ -63,9 +65,26 @@ export default async function CollectionPage({
           {collection.title}
         </h1>
         <p className="text-gray-400 text-sm md:text-lg max-w-2xl mb-4">{collection.blurb}</p>
-        <p className="text-gray-600 text-xs uppercase tracking-widest mb-14">
+        <p className="text-gray-600 text-xs uppercase tracking-widest mb-8">
           {artworks.length} {artworks.length === 1 ? "piece" : "pieces"}
         </p>
+
+        {caseStudy && (
+          <Link
+            href={`/projects/${caseStudy.slug}`}
+            className="group flex items-center justify-between gap-4 border-2 rounded-sm px-6 py-4 mb-14 bg-[#0c0c10] transition-colors hover:bg-white/5"
+            style={{ borderColor: `${collection.accent}66` }}
+          >
+            <span className="text-xs md:text-sm font-black uppercase tracking-widest text-white">
+              Read the full case study behind this project
+            </span>
+            <ArrowUpRight
+              size={18}
+              className="shrink-0 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
+              style={{ color: collection.accent }}
+            />
+          </Link>
+        )}
 
         {artworks.length > 0 ? (
           <GalleryGrid artworks={artworks} />

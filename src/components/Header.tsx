@@ -6,6 +6,7 @@ import { Heart, Menu, X } from "lucide-react";
 
 const LINKS = [
   { href: "/gallery", label: "Gallery" },
+  { href: "/projects", label: "Projects" },
   { href: "/about", label: "About" },
   { href: "/sites", label: "Sites" },
 ];
