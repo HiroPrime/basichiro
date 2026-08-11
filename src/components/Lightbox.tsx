@@ -103,14 +103,14 @@ export default function Lightbox({
         className="max-w-5xl w-full flex flex-col items-center cursor-default"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="relative w-full max-h-[80vh] flex items-center justify-center">
+        <div className="relative w-full max-h-[80vh] flex items-center justify-center rounded-sm border border-[#ddd8cc] bg-[#f2efe7] p-2 md:p-4 shadow-2xl">
           <Image
             src={active.image_url}
             alt={active.title}
             width={1600}
             height={1600}
             unoptimized
-            className="max-w-full max-h-[80vh] w-auto h-auto object-contain rounded-sm border border-[#222] shadow-2xl"
+            className="max-w-full max-h-[76vh] w-auto h-auto object-contain"
           />
         </div>
         <div className="mt-4 text-center">

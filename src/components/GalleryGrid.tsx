@@ -70,7 +70,7 @@ export default function GalleryGrid({ artworks, collections }: Props) {
                 exit={{ opacity: 0, scale: 0.92 }}
                 transition={{ duration: 0.3 }}
                 onClick={() => setActiveIndex(i)}
-                className="group relative w-full block overflow-hidden rounded-sm border border-[#1a1a1e] bg-[#0c0c10] text-left cursor-zoom-in"
+                className="group relative w-full block overflow-hidden rounded-sm border border-[#ddd8cc] bg-[#f2efe7] text-left cursor-zoom-in"
               >
                 <Image
                   src={art.thumb_url}
