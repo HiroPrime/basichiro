@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Permanent_Marker, Press_Start_2P, VT323 } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -9,6 +9,24 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const permanentMarker = Permanent_Marker({
+  variable: "--font-marker",
+  weight: "400",
+  subsets: ["latin"],
+});
+
+const pressStart2P = Press_Start_2P({
+  variable: "--font-pixel-block",
+  weight: "400",
+  subsets: ["latin"],
+});
+
+const vt323 = VT323({
+  variable: "--font-pixel-thin",
+  weight: "400",
   subsets: ["latin"],
 });
 
@@ -26,7 +44,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${permanentMarker.variable} ${pressStart2P.variable} ${vt323.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

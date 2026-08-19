@@ -6,6 +6,14 @@
   --bh-accent: #b64bff;
   --bh-accent-2: #22d3ee;
   --bh-muted: #8a8a94;
+
+  /* Sticker-Zine page tokens (homepage only). --font-marker, --font-pixel-block,
+     and --font-pixel-thin are injected by next/font via a class on <html>
+     (see layout.tsx) — not redeclared here so that injection isn't shadowed. */
+  --zine-bg: #ffffff;
+  --zine-ink: #000000;
+  --zine-green: #42d13d;
+  --zine-pink: #de2564;
 }
 
 * {
@@ -76,4 +84,43 @@ body {
 .hide-scrollbar::-webkit-scrollbar-thumb {
   background: #333;
   border-radius: 999px;
+}
+
+/* ---------------------------------------------------------------- */
+/* Sticker-Zine homepage (white/black comic aesthetic, isolated from */
+/* the dark hybrid theme used by /gallery, /projects, /sites, etc.) */
+/* ---------------------------------------------------------------- */
+.zine-page {
+  background: var(--zine-bg);
+  color: var(--zine-ink);
+}
+
+.zine-marker {
+  font-family: var(--font-marker);
+}
+
+.zine-pixel-block {
+  font-family: var(--font-pixel-block);
+  line-height: 1.5;
+}
+
+.zine-pixel-thin {
+  font-family: var(--font-pixel-thin);
+  letter-spacing: 0.03em;
+}
+
+/* Thick black rounded-rect frame used around the masthead collage. */
+.zine-frame {
+  border: 6px solid var(--zine-ink);
+  border-radius: 28px;
+}
+
+/* Slight hand-drawn wobble shadow used behind marker headlines. */
+.zine-marker-pop {
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.12);
+}
+
+.zine-page ::selection {
+  background: var(--zine-pink);
+  color: #fff;
 }
