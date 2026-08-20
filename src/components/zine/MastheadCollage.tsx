@@ -51,7 +51,7 @@ export default function MastheadCollage() {
             priority
             className="w-full h-auto block"
           />
-          <div className="absolute left-[36%] right-[8%] top-[15%] bottom-[6%] rounded-2xl bg-black/60 shadow-[6px_8px_0_rgba(0,0,0,0.22)] flex items-center justify-center px-3 py-4 text-center">
+          <div className="absolute left-[22%] right-[22%] top-[15%] bottom-[6%] rounded-2xl bg-black/60 shadow-[6px_8px_0_rgba(0,0,0,0.22)] flex items-center justify-center px-3 py-4 text-center">
             <p className="zine-marker zine-marker-pop text-white text-[13px] sm:text-lg md:text-xl leading-[1.15] uppercase">
               A Lifetime
               <br /> Exploring
