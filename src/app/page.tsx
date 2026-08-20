@@ -8,7 +8,7 @@ import ClimbingPixelCharacter from "@/components/zine/ClimbingPixelCharacter";
 export default function Home() {
   return (
     <main className="zine-page relative min-h-screen w-full">
-      <div className="relative mx-auto w-full max-w-[480px]">
+      <div className="relative mx-auto w-full max-w-[480px] sm:max-w-[540px] md:max-w-[620px] lg:max-w-[680px]">
         <MastheadCollage />
         <BioSection />
         <SitesPanel />

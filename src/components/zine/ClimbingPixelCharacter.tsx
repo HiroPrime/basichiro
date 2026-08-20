@@ -21,7 +21,7 @@ export default function ClimbingPixelCharacter() {
   return (
     <div
       aria-hidden="true"
-      className="pointer-events-none fixed inset-x-0 top-0 z-30 mx-auto h-0 w-full max-w-[480px]"
+      className="pointer-events-none fixed inset-x-0 top-0 z-30 mx-auto h-0 w-full max-w-[480px] sm:max-w-[540px] md:max-w-[620px] lg:max-w-[680px]"
     >
       <motion.div
         className="absolute right-2 sm:right-6 w-12 sm:w-16 opacity-90 drop-shadow-[2px_2px_0_rgba(0,0,0,0.25)]"

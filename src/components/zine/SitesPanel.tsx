@@ -95,11 +95,11 @@ export default function SitesPanel() {
           </div>
         </div>
 
-        <ScrollParallax
-          speed={55}
-          rotateRange={[-4, 4]}
-          className="absolute -right-3 sm:-right-7 -bottom-10 sm:-bottom-12 z-20 w-24 sm:w-28"
-        >
+            <ScrollParallax
+              xRange={[-45, 45]}
+              rotateRange={[-4, 4]}
+              className="absolute -right-3 sm:-right-7 -bottom-10 sm:-bottom-12 z-20 w-24 sm:w-28"
+            >
           <Image
             src="/design/ghost-detective.webp"
             alt=""

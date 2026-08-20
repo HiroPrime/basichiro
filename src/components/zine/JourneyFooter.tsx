@@ -94,11 +94,12 @@ export default function JourneyFooter() {
 
       <p className="zine-pixel-thin text-sm text-black/60 mt-4">© BasicHiro</p>
 
-      <ScrollParallax
-        speed={45}
-        rotateRange={[-3, 3]}
-        className="pointer-events-none absolute -right-10 sm:-right-16 -bottom-6 z-0 w-24 sm:w-28"
-      >
+          <ScrollParallax
+            xRange={[45, -45]}
+            yRange={[45, -45]}
+            rotateRange={[-3, 3]}
+            className="pointer-events-none absolute -right-10 sm:-right-16 -bottom-6 z-0 w-24 sm:w-28"
+          >
         <Image
           src="/design/corner-planet.webp"
           alt=""

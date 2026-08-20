@@ -18,11 +18,12 @@ export default function BioSection() {
           className="w-full h-auto block"
         />
 
-        <ScrollParallax
-          speed={130}
-          rotateRange={[-6, 6]}
-          className="absolute -left-[4%] bottom-[-22%] z-20 w-[24%]"
-        >
+            <ScrollParallax
+              xRange={[-55, 55]}
+              yRange={[70, -70]}
+              rotateRange={[-6, 6]}
+              className="absolute -left-[4%] bottom-[-22%] z-20 w-[24%]"
+            >
           <Image
             src="/design/rocket.webp"
             alt=""
