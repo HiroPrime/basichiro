@@ -8,10 +8,9 @@ import { motion, useScroll, useTransform } from "framer-motion";
  * its vertical position is driven directly by whole-page scroll progress,
  * moving from near the bottom of the screen toward the top as you scroll.
  *
- * The outer wrapper is fixed to the full viewport but capped to the same
- * centered max-w-[480px] column as the page content, so the sprite clings
- * to the edge of that column instead of stranding at the real viewport edge
- * on wide desktop screens.
+ * The outer wrapper is fixed to the full viewport (the page content now
+ * fills edge-to-edge), so the sprite clings to the right edge of the
+ * screen itself.
  */
 export default function ClimbingPixelCharacter() {
   const { scrollYProgress } = useScroll();
@@ -21,7 +20,7 @@ export default function ClimbingPixelCharacter() {
   return (
     <div
       aria-hidden="true"
-      className="pointer-events-none fixed inset-x-0 top-0 z-30 mx-auto h-0 w-full max-w-[480px] sm:max-w-[540px] md:max-w-[620px] lg:max-w-[680px]"
+      className="pointer-events-none fixed inset-x-0 top-0 z-30 h-0 w-full"
     >
       <motion.div
         className="absolute right-2 sm:right-6 w-12 sm:w-16 opacity-90 drop-shadow-[2px_2px_0_rgba(0,0,0,0.25)]"

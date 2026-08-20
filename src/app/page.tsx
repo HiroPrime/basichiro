@@ -8,7 +8,7 @@ import ClimbingPixelCharacter from "@/components/zine/ClimbingPixelCharacter";
 export default function Home() {
   return (
     <main className="zine-page relative min-h-screen w-full">
-      <div className="relative mx-auto w-full max-w-[480px] sm:max-w-[540px] md:max-w-[620px] lg:max-w-[680px]">
+      <div className="relative w-full">
         <MastheadCollage />
         <BioSection />
         <SitesPanel />
@@ -16,6 +16,10 @@ export default function Home() {
         <JourneyFooter />
       </div>
       <ClimbingPixelCharacter />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none fixed inset-0 z-50 border-[8px] sm:border-[12px] border-black"
+      />
     </main>
   );
 }
