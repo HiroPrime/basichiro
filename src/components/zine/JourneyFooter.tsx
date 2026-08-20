@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import ScrollParallax from "./ScrollParallax";
+import PixelCharacterPeek from "./PixelCharacterPeek";
 
 export default function JourneyFooter() {
   const [email, setEmail] = useState("");
@@ -54,6 +55,7 @@ export default function JourneyFooter() {
           disabled={status === "loading" || status === "success"}
           className="zine-pixel-thin flex-1 min-w-0 rounded-full bg-black text-white placeholder-white/70 px-5 py-2 text-lg sm:text-xl outline-none disabled:opacity-60"
         />
+        <PixelCharacterPeek />
         <button
           type="submit"
           disabled={status === "loading" || status === "success"}

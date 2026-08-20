@@ -3,7 +3,6 @@ import BioSection from "@/components/zine/BioSection";
 import SitesPanel from "@/components/zine/SitesPanel";
 import CreatorJourneyGrid from "@/components/zine/CreatorJourneyGrid";
 import JourneyFooter from "@/components/zine/JourneyFooter";
-import ClimbingPixelCharacter from "@/components/zine/ClimbingPixelCharacter";
 
 export default function Home() {
   return (
@@ -15,7 +14,6 @@ export default function Home() {
         <CreatorJourneyGrid />
         <JourneyFooter />
       </div>
-      <ClimbingPixelCharacter />
       <div
         aria-hidden="true"
         className="pointer-events-none fixed inset-0 z-50 border-[8px] sm:border-[12px] border-black"
